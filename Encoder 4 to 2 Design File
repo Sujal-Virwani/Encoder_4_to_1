@@ -1,0 +1,26 @@
+// Code your testbench here
+// or browse Examples
+
+module encode_4_to_2_tb();
+  reg [0:3]I;
+  wire [0:1]out;
+  wire V;
+  
+  encoder_4_to_2 encode_4to2(out,V,I);
+  
+  initial
+    begin 
+      $moniter("time=%d \t V=%b \t I=%b \t out=%b",$time,I,out,V);
+      I=4'b0001;
+      #5; I=4'b0011;
+      #5; I=4'b0010;
+      #5; I=4'b1000;
+    end
+  initial
+    begin
+      $dumpfile("dump.vcd");
+      $dumpvars(1);
+    end 
+endmodule
+      
+ 
